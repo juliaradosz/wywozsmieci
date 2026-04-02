@@ -48,20 +48,32 @@ class Command(BaseCommand):
             (date(2026, 12, 9), 'opakowaniowe'),
         ]
 
-        # ZMIESZANE: 7.01, 4.02, 4.03, 8.04, 6.05, 3.06, 1.07, 5.08, 2.09, 7.10, 4.11, 2.12
+        # ZMIESZANE
         dane += [
-            (date(2026, 1, 7), 'zmieszane'),
-            (date(2026, 2, 4), 'zmieszane'),
-            (date(2026, 3, 4), 'zmieszane'),
-            (date(2026, 4, 8), 'zmieszane'),
-            (date(2026, 5, 6), 'zmieszane'),
-            (date(2026, 6, 3), 'zmieszane'),
-            (date(2026, 7, 1), 'zmieszane'),
-            (date(2026, 8, 5), 'zmieszane'),
-            (date(2026, 9, 2), 'zmieszane'),
-            (date(2026, 10, 7), 'zmieszane'),
-            (date(2026, 11, 4), 'zmieszane'),
-            (date(2026, 12, 2), 'zmieszane'),
+            (date(2026, 1, 16), 'zmieszane'),
+            (date(2026, 1, 30), 'zmieszane'),
+            (date(2026, 2, 13), 'zmieszane'),
+            (date(2026, 2, 27), 'zmieszane'),
+            (date(2026, 3, 13), 'zmieszane'),
+            (date(2026, 3, 27), 'zmieszane'),
+            (date(2026, 4, 10), 'zmieszane'),
+            (date(2026, 4, 24), 'zmieszane'),
+            (date(2026, 5, 8), 'zmieszane'),
+            (date(2026, 5, 22), 'zmieszane'),
+            (date(2026, 6, 12), 'zmieszane'),
+            (date(2026, 6, 26), 'zmieszane'),
+            (date(2026, 7, 10), 'zmieszane'),
+            (date(2026, 7, 24), 'zmieszane'),
+            (date(2026, 8, 7), 'zmieszane'),
+            (date(2026, 8, 21), 'zmieszane'),
+            (date(2026, 9, 4), 'zmieszane'),
+            (date(2026, 9, 18), 'zmieszane'),
+            (date(2026, 10, 2), 'zmieszane'),
+            (date(2026, 10, 23), 'zmieszane'),
+            (date(2026, 11, 6), 'zmieszane'),
+            (date(2026, 11, 20), 'zmieszane'),
+            (date(2026, 12, 4), 'zmieszane'),
+            (date(2026, 12, 18), 'zmieszane'),
         ]
 
         # SZKŁO: 16.01, 13.03, 15.05, 17.07, 11.09, 20.11
