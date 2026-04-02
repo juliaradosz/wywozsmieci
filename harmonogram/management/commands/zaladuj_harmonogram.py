@@ -107,13 +107,15 @@ class Command(BaseCommand):
             (date(2026, 12, 29), 'biodegradowalne'),
         ]
 
-        # POPIÓŁ
+        # POPIÓŁ: 21.01, 18.02, 18.03, 22.04, 21.10, 18.11, 16.12
         dane += [
-            (date(2026, 1, 12), 'popiol'),
-            (date(2026, 2, 9), 'popiol'),
-            (date(2026, 3, 9), 'popiol'),
-            (date(2026, 11, 30), 'popiol'),
-            (date(2026, 12, 14), 'popiol'),
+            (date(2026, 1, 21), 'popiol'),
+            (date(2026, 2, 18), 'popiol'),
+            (date(2026, 3, 18), 'popiol'),
+            (date(2026, 4, 22), 'popiol'),
+            (date(2026, 10, 21), 'popiol'),
+            (date(2026, 11, 18), 'popiol'),
+            (date(2026, 12, 16), 'popiol'),
         ]
 
         obiekty = [WywozSmieci(data=d, typ_odpadu=t) for d, t in dane]
