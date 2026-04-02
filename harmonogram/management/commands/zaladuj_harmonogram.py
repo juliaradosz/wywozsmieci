@@ -29,39 +29,39 @@ class Command(BaseCommand):
             (date(2026, 12, 8), 'papier'),
         ]
 
-        # ZMIESZANE: 14.01, 11.02, 11.03, 15.04, 20.05, 10.06, 24.06, 8.07, 22.07, 5.08, 19.08, 16.09, 14.10, 12.11, 9.12
+        # OPAKOWANIOWE (plastik): 14.01, 11.02, 11.03, 15.04, 20.05, 10.06, 24.06, 8.07, 22.07, 5.08, 19.08, 16.09, 14.10, 12.11, 9.12
         dane += [
-            (date(2026, 1, 14), 'zmieszane'),
-            (date(2026, 2, 11), 'zmieszane'),
-            (date(2026, 3, 11), 'zmieszane'),
-            (date(2026, 4, 15), 'zmieszane'),
-            (date(2026, 5, 20), 'zmieszane'),
-            (date(2026, 6, 10), 'zmieszane'),
-            (date(2026, 6, 24), 'zmieszane'),
-            (date(2026, 7, 8), 'zmieszane'),
-            (date(2026, 7, 22), 'zmieszane'),
-            (date(2026, 8, 5), 'zmieszane'),
-            (date(2026, 8, 19), 'zmieszane'),
-            (date(2026, 9, 16), 'zmieszane'),
-            (date(2026, 10, 14), 'zmieszane'),
-            (date(2026, 11, 12), 'zmieszane'),
-            (date(2026, 12, 9), 'zmieszane'),
+            (date(2026, 1, 14), 'opakowaniowe'),
+            (date(2026, 2, 11), 'opakowaniowe'),
+            (date(2026, 3, 11), 'opakowaniowe'),
+            (date(2026, 4, 15), 'opakowaniowe'),
+            (date(2026, 5, 20), 'opakowaniowe'),
+            (date(2026, 6, 10), 'opakowaniowe'),
+            (date(2026, 6, 24), 'opakowaniowe'),
+            (date(2026, 7, 8), 'opakowaniowe'),
+            (date(2026, 7, 22), 'opakowaniowe'),
+            (date(2026, 8, 5), 'opakowaniowe'),
+            (date(2026, 8, 19), 'opakowaniowe'),
+            (date(2026, 9, 16), 'opakowaniowe'),
+            (date(2026, 10, 14), 'opakowaniowe'),
+            (date(2026, 11, 12), 'opakowaniowe'),
+            (date(2026, 12, 9), 'opakowaniowe'),
         ]
 
-        # OPAKOWANIOWE
+        # ZMIESZANE: 7.01, 4.02, 4.03, 8.04, 6.05, 3.06, 1.07, 5.08, 2.09, 7.10, 4.11, 2.12
         dane += [
-            (date(2026, 1, 7), 'opakowaniowe'),
-            (date(2026, 2, 4), 'opakowaniowe'),
-            (date(2026, 3, 4), 'opakowaniowe'),
-            (date(2026, 4, 8), 'opakowaniowe'),
-            (date(2026, 5, 6), 'opakowaniowe'),
-            (date(2026, 6, 3), 'opakowaniowe'),
-            (date(2026, 7, 1), 'opakowaniowe'),
-            (date(2026, 8, 5), 'opakowaniowe'),
-            (date(2026, 9, 2), 'opakowaniowe'),
-            (date(2026, 10, 7), 'opakowaniowe'),
-            (date(2026, 11, 4), 'opakowaniowe'),
-            (date(2026, 12, 2), 'opakowaniowe'),
+            (date(2026, 1, 7), 'zmieszane'),
+            (date(2026, 2, 4), 'zmieszane'),
+            (date(2026, 3, 4), 'zmieszane'),
+            (date(2026, 4, 8), 'zmieszane'),
+            (date(2026, 5, 6), 'zmieszane'),
+            (date(2026, 6, 3), 'zmieszane'),
+            (date(2026, 7, 1), 'zmieszane'),
+            (date(2026, 8, 5), 'zmieszane'),
+            (date(2026, 9, 2), 'zmieszane'),
+            (date(2026, 10, 7), 'zmieszane'),
+            (date(2026, 11, 4), 'zmieszane'),
+            (date(2026, 12, 2), 'zmieszane'),
         ]
 
         # SZKŁO: 16.01, 13.03, 15.05, 17.07, 11.09, 20.11
