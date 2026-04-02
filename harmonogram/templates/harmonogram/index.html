@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonogram wywozu śmieci - Gmina Przodkowo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f4f0;
+            color: #333;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 5px;
+            font-size: 1.6em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .nav a {
+            text-decoration: none;
+            background: #2e7d32;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .nav a:hover { background: #1b5e20; }
+        .nav .miesiac-nazwa {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        th {
+            background: #2e7d32;
+            color: white;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+        td {
+            border: 1px solid #e0e0e0;
+            padding: 6px;
+            vertical-align: top;
+            height: 75px;
+            width: 14.28%;
+        }
+        .dzien-numer {
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-bottom: 4px;
+            color: #555;
+        }
+        .dzisiaj .dzien-numer {
+            background: #2e7d32;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pusty { background: #fafafa; }
+        .badge {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            margin: 1px 0;
+            color: white;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+        }
+        .badge-zmieszane { background: #f9a825; }
+        .badge-opakowaniowe { background: #43a047; }
+        .badge-papier { background: #1e88e5; }
+        .badge-biodegradowalne { background: #6d4c41; }
+        .badge-popiol { background: #757575; }
+
+        .najblizsze {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .najblizsze h2 {
+            color: #2e7d32;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+        .najblizsze-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .najblizsze-item:last-child { border-bottom: none; }
+        .najblizsze-data {
+            font-weight: bold;
+            min-width: 120px;
+            color: #555;
+        }
+        .najblizsze-badge {
+            padding: 4px 12px;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+        .legenda {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .legenda-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85em;
+        }
+        .legenda-kolor {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+        @media (max-width: 600px) {
+            td { height: 60px; padding: 3px; }
+            .badge { font-size: 0.6em; }
+            .nav .miesiac-nazwa { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <h1>♻️ Wywóz Śmieci</h1>
+    <p class="subtitle">Gmina Przodkowo – Masłowo, Nowe Tokary, Otalżyno, Tokarskie Pnie, Tokary, Warzenko</p>
+
+    <div class="najblizsze">
+        <h2>📅 Najbliższe wywozy</h2>
+        {% for w in najblizsze %}
+        <div class="najblizsze-item">
+            <span class="najblizsze-data">{{ w.data|date:"l, d.m" }}</span>
+            <span class="najblizsze-badge badge-{{ w.typ_odpadu }}">{{ w.get_typ_odpadu_display }}</span>
+        </div>
+        {% empty %}
+        <p>Brak zaplanowanych wywozów.</p>
+        {% endfor %}
+    </div>
+
+    <div class="nav">
+        <a href="?miesiac={{ prev_miesiac }}&rok={{ prev_rok }}">« Poprzedni</a>
+        <span class="miesiac-nazwa">{{ nazwa_miesiaca }} {{ rok }}</span>
+        <a href="?miesiac={{ next_miesiac }}&rok={{ next_rok }}">Następny »</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pon</th><th>Wt</th><th>Śr</th><th>Czw</th><th>Pt</th><th>Sob</th><th>Nd</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tydzien in kalendarz %}
+            <tr>
+            {% for d in tydzien %}
+                {% if d.dzien == 0 %}
+                    <td class="pusty"></td>
+                {% else %}
+                    <td class="{% if d.dzisiaj %}dzisiaj{% endif %}">
+                        <div class="dzien-numer">{{ d.dzien }}</div>
+                        {% for typ in d.typy %}
+                            <div class="badge badge-{{ typ }}">
+                                {% if typ == "zmieszane" %}Zmiesz.
+                                {% elif typ == "opakowaniowe" %}Opakow.
+                                {% elif typ == "papier" %}Papier
+                                {% elif typ == "biodegradowalne" %}Bio
+                                {% elif typ == "popiol" %}Popiół
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="legenda">
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#f9a825"></div> Zmieszane</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#43a047"></div> Opakowaniowe</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#1e88e5"></div> Papier</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#6d4c41"></div> Biodegradowalne</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#757575"></div> Popiół</div>
+    </div>
+</body>
+</html>
