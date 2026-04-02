@@ -4,4 +4,5 @@ __pycache__/
 *.pyo
 .env
 *.jpg
-*.png
+# Allow PNG icons in static
+!harmonogram/static/harmonogram/*.png
