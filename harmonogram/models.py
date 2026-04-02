@@ -3,8 +3,8 @@ from django.db import models
 
 class WywozSmieci(models.Model):
     TYPY_ODPADOW = [
-        ('zmieszane', 'Zmieszane odpady komunalne'),
-        ('opakowaniowe', 'Zmieszane odpady opakowaniowe'),
+        ('zmieszane', 'Zmieszane'),
+        ('opakowaniowe', 'Plastik'),
         ('papier', 'Papier'),
         ('szklo', 'Szkło'),
         ('biodegradowalne', 'Odpady biodegradowalne'),
