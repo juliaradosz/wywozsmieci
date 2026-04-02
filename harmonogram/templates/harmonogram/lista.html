@@ -1,0 +1,70 @@
+{% extends "harmonogram/base.html" %}
+{% block title %}Lista wywozow {{ rok }}{% endblock %}
+
+{% block extra_css %}
+.rok-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.rok-nav .rok { font-size: 1.4em; font-weight: 700; color: #1b5e20; }
+
+.miesiac-header {
+    font-size: 1em;
+    font-weight: 700;
+    color: #1b5e20;
+    padding: 12px 0 8px;
+    border-bottom: 2px solid #e8f5e9;
+    margin-bottom: 8px;
+}
+.lista-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+    gap: 12px;
+}
+.lista-item:last-child { border-bottom: none; }
+.lista-data {
+    font-weight: 600;
+    min-width: 120px;
+    color: #444;
+    font-size: 0.9em;
+}
+.lista-ikona { font-size: 1.2em; min-width: 30px; text-align: center; }
+.lista-actions { margin-left: auto; display: flex; gap: 6px; }
+.past { opacity: 0.5; }
+{% endblock %}
+
+{% block content %}
+
+<div class="rok-nav">
+    <a href="?rok={{ rok|add:'-1' }}" class="btn btn-secondary btn-sm">&laquo; {{ rok|add:"-1" }}</a>
+    <span class="rok">{{ rok }}</span>
+    <a href="?rok={{ rok|add:'1' }}" class="btn btn-secondary btn-sm">{{ rok|add:"1" }} &raquo;</a>
+</div>
+
+{% for m, dane in pogrupowane.items %}
+<div class="card">
+    <div class="miesiac-header">{{ dane.nazwa }}</div>
+    {% for w in dane.wywozki %}
+    <div class="lista-item {% if w.data < dzisiaj %}past{% endif %}">
+        <span class="lista-ikona">{% for k, v in ikony.items %}{% if k == w.typ_odpadu %}{{ v }}{% endif %}{% endfor %}</span>
+        <span class="lista-data">{{ w.data|date:"d.m (l)" }}</span>
+        <span class="badge badge-{{ w.typ_odpadu }}">{{ w.get_typ_odpadu_display }}</span>
+        <span class="lista-actions">
+            <a href="{% url 'edytuj' w.pk %}" class="btn-icon" title="Edytuj">&#9998;</a>
+            <a href="{% url 'usun' w.pk %}" class="btn-icon" title="Usun" style="color:#d32f2f;">&#128465;</a>
+        </span>
+    </div>
+    {% endfor %}
+</div>
+{% empty %}
+<div class="card" style="text-align: center; color: #999; padding: 40px;">
+    Brak wywozow w {{ rok }} roku.
+</div>
+{% endfor %}
+
+{% endblock %}

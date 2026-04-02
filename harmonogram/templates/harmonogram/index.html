@@ -1,191 +1,192 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harmonogram wywozu śmieci - Gmina Przodkowo</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: #f0f4f0;
-            color: #333;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #2e7d32;
-            margin-bottom: 5px;
-            font-size: 1.6em;
-        }
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .nav a {
-            text-decoration: none;
-            background: #2e7d32;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: bold;
-        }
-        .nav a:hover { background: #1b5e20; }
-        .nav .miesiac-nazwa {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
-        }
-        th {
-            background: #2e7d32;
-            color: white;
-            padding: 10px;
-            font-size: 0.9em;
-        }
-        td {
-            border: 1px solid #e0e0e0;
-            padding: 6px;
-            vertical-align: top;
-            height: 75px;
-            width: 14.28%;
-        }
-        .dzien-numer {
-            font-weight: bold;
-            font-size: 0.85em;
-            margin-bottom: 4px;
-            color: #555;
-        }
-        .dzisiaj .dzien-numer {
-            background: #2e7d32;
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .pusty { background: #fafafa; }
-        .badge {
-            display: inline-block;
-            padding: 1px 6px;
-            border-radius: 4px;
-            font-size: 0.7em;
-            margin: 1px 0;
-            color: white;
-            font-weight: bold;
-            width: 100%;
-            text-align: center;
-        }
-        .badge-zmieszane { background: #f9a825; }
-        .badge-opakowaniowe { background: #43a047; }
-        .badge-papier { background: #1e88e5; }
-        .badge-biodegradowalne { background: #6d4c41; }
-        .badge-popiol { background: #757575; }
+{% extends "harmonogram/base.html" %}
+{% block title %}Kalendarz{% endblock %}
 
-        .najblizsze {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
-        }
-        .najblizsze h2 {
-            color: #2e7d32;
-            margin-bottom: 12px;
-            font-size: 1.2em;
-        }
-        .najblizsze-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .najblizsze-item:last-child { border-bottom: none; }
-        .najblizsze-data {
-            font-weight: bold;
-            min-width: 120px;
-            color: #555;
-        }
-        .najblizsze-badge {
-            padding: 4px 12px;
-            border-radius: 6px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.85em;
-        }
-        .legenda {
-            background: white;
-            border-radius: 10px;
-            padding: 15px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-        .legenda-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85em;
-        }
-        .legenda-kolor {
-            width: 16px;
-            height: 16px;
-            border-radius: 3px;
-        }
-        @media (max-width: 600px) {
-            td { height: 60px; padding: 3px; }
-            .badge { font-size: 0.6em; }
-            .nav .miesiac-nazwa { font-size: 1.1em; }
-        }
-    </style>
-</head>
-<body>
-    <h1>♻️ Wywóz Śmieci</h1>
-    <p class="subtitle">Gmina Przodkowo – Masłowo, Nowe Tokary, Otalżyno, Tokarskie Pnie, Tokary, Warzenko</p>
+{% block extra_css %}
+.alert-box {
+    background: linear-gradient(135deg, #fff3e0, #fff8e1);
+    border-left: 4px solid #ef6c00;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+}
+.alert-box.alert-green {
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    border-left-color: #2e7d32;
+}
+.alert-box .alert-icon { font-size: 1.6em; }
+.alert-box .alert-text { flex: 1; }
+.alert-box .alert-days {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ef6c00;
+    min-width: 50px;
+    text-align: center;
+}
+.alert-box.alert-green .alert-days { color: #2e7d32; }
 
-    <div class="najblizsze">
-        <h2>📅 Najbliższe wywozy</h2>
-        {% for w in najblizsze %}
-        <div class="najblizsze-item">
-            <span class="najblizsze-data">{{ w.data|date:"l, d.m" }}</span>
-            <span class="najblizsze-badge badge-{{ w.typ_odpadu }}">{{ w.get_typ_odpadu_display }}</span>
-        </div>
-        {% empty %}
-        <p>Brak zaplanowanych wywozów.</p>
-        {% endfor %}
+.najblizsze-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 12px;
+}
+.najblizsze-item:last-child { border-bottom: none; }
+.najblizsze-data {
+    font-weight: 600;
+    min-width: 140px;
+    color: #444;
+    font-size: 0.95em;
+}
+.najblizsze-ikona { font-size: 1.3em; }
+
+.month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.month-name {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #1b5e20;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+    margin-bottom: 4px;
+}
+th {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px 4px;
+    font-size: 0.8em;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+td {
+    background: white;
+    border-radius: 10px;
+    padding: 6px 4px;
+    vertical-align: top;
+    height: 80px;
+    width: 14.28%;
+    border: 1px solid #f0f0f0;
+    transition: all 0.15s;
+}
+td:hover { border-color: #c8e6c9; background: #fafffe; }
+td.pusty { background: #fafafa; border-color: transparent; }
+td.pusty:hover { background: #fafafa; }
+.dzien-numer {
+    font-weight: 600;
+    font-size: 0.82em;
+    margin-bottom: 4px;
+    color: #888;
+}
+td.dzisiaj {
+    border: 2px solid #2e7d32;
+    background: #f1f8e9;
+}
+td.dzisiaj .dzien-numer {
+    color: white;
+    background: #2e7d32;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+}
+.cal-badge {
+    display: block;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.62em;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    margin: 1px 0;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+.cal-badge:hover { opacity: 0.8; }
+
+.legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 12px;
+    font-size: 0.82em;
+    color: #666;
+}
+.legenda-item { display: flex; align-items: center; gap: 6px; }
+.legenda-kolor {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+    td { height: 65px; padding: 4px 2px; }
+    .cal-badge { font-size: 0.55em; padding: 1px 2px; }
+    .month-name { font-size: 1.1em; }
+    .najblizsze-data { min-width: 110px; font-size: 0.85em; }
+}
+{% endblock %}
+
+{% block content %}
+
+{% if dni_do is not None %}
+<div class="alert-box {% if dni_do > 1 %}alert-green{% endif %}">
+    <div class="alert-icon">{% if dni_do == 0 %}&#9888;{% elif dni_do == 1 %}&#9888;{% else %}&#128197;{% endif %}</div>
+    <div class="alert-text">
+        {% if dni_do == 0 %}
+            <strong>Dzisiaj wywoz!</strong> {{ najblizsze.0.get_typ_odpadu_display }}
+        {% elif dni_do == 1 %}
+            <strong>Jutro wywoz!</strong> {{ najblizsze.0.get_typ_odpadu_display }}
+        {% else %}
+            Nastepny wywoz za <strong>{{ dni_do }} dni</strong> ({{ najblizsze.0.get_typ_odpadu_display }})
+        {% endif %}
     </div>
+    <div class="alert-days">{{ dni_do }}d</div>
+</div>
+{% endif %}
 
-    <div class="nav">
-        <a href="?miesiac={{ prev_miesiac }}&rok={{ prev_rok }}">« Poprzedni</a>
-        <span class="miesiac-nazwa">{{ nazwa_miesiaca }} {{ rok }}</span>
-        <a href="?miesiac={{ next_miesiac }}&rok={{ next_rok }}">Następny »</a>
+<div class="card">
+    <div class="card-header">&#128197; Najblizsze wywozy</div>
+    {% for w in najblizsze %}
+    <div class="najblizsze-item">
+        <span class="najblizsze-ikona">{% for k, v in ikony.items %}{% if k == w.typ_odpadu %}{{ v }}{% endif %}{% endfor %}</span>
+        <span class="najblizsze-data">{{ w.data|date:"l, d.m.Y" }}</span>
+        <span class="badge badge-{{ w.typ_odpadu }}">{{ w.get_typ_odpadu_display }}</span>
+        <a href="{% url 'edytuj' w.pk %}" class="btn-icon" title="Edytuj">&#9998;</a>
+    </div>
+    {% empty %}
+    <p style="color:#999; padding: 20px 0; text-align:center;">Brak zaplanowanych wywozow.</p>
+    {% endfor %}
+</div>
+
+<div class="card" style="padding: 16px;">
+    <div class="month-nav">
+        <a href="?miesiac={{ prev_miesiac }}&rok={{ prev_rok }}" class="btn btn-secondary btn-sm">&laquo; {{ prev_miesiac }}</a>
+        <span class="month-name">{{ nazwa_miesiaca }} {{ rok }}</span>
+        <a href="?miesiac={{ next_miesiac }}&rok={{ next_rok }}" class="btn btn-secondary btn-sm">{{ next_miesiac }} &raquo;</a>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>Pon</th><th>Wt</th><th>Śr</th><th>Czw</th><th>Pt</th><th>Sob</th><th>Nd</th>
+                <th>Pon</th><th>Wt</th><th>Sr</th><th>Czw</th><th>Pt</th><th>Sob</th><th>Nd</th>
             </tr>
         </thead>
         <tbody>
@@ -197,15 +198,10 @@
                 {% else %}
                     <td class="{% if d.dzisiaj %}dzisiaj{% endif %}">
                         <div class="dzien-numer">{{ d.dzien }}</div>
-                        {% for typ in d.typy %}
-                            <div class="badge badge-{{ typ }}">
-                                {% if typ == "zmieszane" %}Zmiesz.
-                                {% elif typ == "opakowaniowe" %}Opakow.
-                                {% elif typ == "papier" %}Papier
-                                {% elif typ == "biodegradowalne" %}Bio
-                                {% elif typ == "popiol" %}Popiół
-                                {% endif %}
-                            </div>
+                        {% for w in d.wywozki %}
+                            <a href="{% url 'edytuj' w.id %}" class="cal-badge badge-{{ w.typ }}" title="{{ w.typ }}">
+                                {{ w.ikona }}
+                            </a>
                         {% endfor %}
                     </td>
                 {% endif %}
@@ -216,11 +212,12 @@
     </table>
 
     <div class="legenda">
-        <div class="legenda-item"><div class="legenda-kolor" style="background:#f9a825"></div> Zmieszane</div>
-        <div class="legenda-item"><div class="legenda-kolor" style="background:#43a047"></div> Opakowaniowe</div>
-        <div class="legenda-item"><div class="legenda-kolor" style="background:#1e88e5"></div> Papier</div>
-        <div class="legenda-item"><div class="legenda-kolor" style="background:#6d4c41"></div> Biodegradowalne</div>
-        <div class="legenda-item"><div class="legenda-kolor" style="background:#757575"></div> Popiół</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#ef6c00"></div> Zmieszane</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#2e7d32"></div> Opakowaniowe</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#1565c0"></div> Papier</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#5d4037"></div> Bio</div>
+        <div class="legenda-item"><div class="legenda-kolor" style="background:#616161"></div> Popiol</div>
     </div>
-</body>
-</html>
+</div>
+
+{% endblock %}

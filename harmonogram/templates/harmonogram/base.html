@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Wywóz Śmieci{% endblock %} - Gmina Przodkowo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 50%, #e0f2f1 100%);
+            color: #1a1a2e;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32, #388e3c);
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .topbar-logo {
+            font-size: 1.4em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .topbar-nav { display: flex; gap: 8px; }
+        .topbar-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 500;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.2s;
+        }
+        .topbar-nav a:hover { background: rgba(255,255,255,0.3); }
+        .topbar-nav a.active { background: rgba(255,255,255,0.35); }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1b5e20;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: white;
+        }
+        .btn-primary:hover { background: linear-gradient(135deg, #1b5e20, #2e7d32); transform: translateY(-1px); }
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #555;
+        }
+        .btn-secondary:hover { background: #e0e0e0; }
+        .btn-danger {
+            background: #ef5350;
+            color: white;
+        }
+        .btn-danger:hover { background: #d32f2f; }
+        .btn-sm { padding: 6px 12px; font-size: 0.8em; border-radius: 8px; }
+        .btn-icon { padding: 6px 10px; font-size: 0.85em; border-radius: 8px; background: rgba(0,0,0,0.04); color: #666; }
+        .btn-icon:hover { background: rgba(0,0,0,0.08); }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.72em;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+        .badge-zmieszane { background: #ef6c00; }
+        .badge-opakowaniowe { background: #2e7d32; }
+        .badge-papier { background: #1565c0; }
+        .badge-biodegradowalne { background: #5d4037; }
+        .badge-popiol { background: #616161; }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus { border-color: #2e7d32; outline: none; }
+        .form-group { margin-bottom: 16px; }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 640px) {
+            .topbar { flex-direction: column; gap: 10px; text-align: center; }
+            .container { padding: 16px 10px; }
+            .card { padding: 16px; border-radius: 12px; }
+        }
+
+        {% block extra_css %}{% endblock %}
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-logo">&#9851; Wywoz Smieci</div>
+        <nav class="topbar-nav">
+            <a href="{% url 'harmonogram' %}" class="{% if request.resolver_match.url_name == 'harmonogram' %}active{% endif %}">Kalendarz</a>
+            <a href="{% url 'lista' %}" class="{% if request.resolver_match.url_name == 'lista' %}active{% endif %}">Lista</a>
+            <a href="{% url 'dodaj' %}" class="{% if request.resolver_match.url_name == 'dodaj' %}active{% endif %}">+ Dodaj</a>
+        </nav>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
