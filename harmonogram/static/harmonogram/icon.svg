@@ -11,29 +11,29 @@
 
   <!-- Trash bin -->
   <!-- Lid handle -->
-  <rect x="220" y="105" width="72" height="30" rx="12" fill="rgba(255,255,255,0.9)"/>
+  <rect x="218" y="80" width="76" height="32" rx="14" fill="rgba(255,255,255,0.95)"/>
   <!-- Lid -->
-  <rect x="145" y="128" width="222" height="35" rx="10" fill="white"/>
+  <rect x="135" y="105" width="242" height="38" rx="12" fill="white"/>
   <!-- Body -->
-  <path d="M160,170 L175,390 Q178,405 193,405 L319,405 Q334,405 337,390 L352,170 Z" fill="rgba(255,255,255,0.9)"/>
-  <!-- Bin lines -->
-  <line x1="220" y1="195" x2="225" y2="380" stroke="rgba(27,94,32,0.25)" stroke-width="5" stroke-linecap="round"/>
-  <line x1="256" y1="195" x2="256" y2="380" stroke="rgba(27,94,32,0.25)" stroke-width="5" stroke-linecap="round"/>
-  <line x1="292" y1="195" x2="287" y2="380" stroke="rgba(27,94,32,0.25)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M152,150 L170,400 Q173,418 190,418 L322,418 Q339,418 342,400 L360,150 Z" fill="rgba(255,255,255,0.92)"/>
+  <!-- Bin vertical lines -->
+  <line x1="215" y1="180" x2="219" y2="390" stroke="rgba(27,94,32,0.2)" stroke-width="6" stroke-linecap="round"/>
+  <line x1="256" y1="180" x2="256" y2="390" stroke="rgba(27,94,32,0.2)" stroke-width="6" stroke-linecap="round"/>
+  <line x1="297" y1="180" x2="293" y2="390" stroke="rgba(27,94,32,0.2)" stroke-width="6" stroke-linecap="round"/>
 
-  <!-- Recycle arrows -->
-  <g transform="translate(256,290) scale(1.1)" fill="white" opacity="0.3">
+  <!-- Recycle symbol (three chasing arrows) -->
+  <g transform="translate(256, 285)" fill="none" stroke="rgba(27,94,32,0.35)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
     <!-- Top arrow -->
-    <path d="M0,-45 L-12,-25 L-4,-25 L-4,-10 L4,-10 L4,-25 L12,-25 Z"/>
+    <path d="M-5,-65 L-30,-25"/>
+    <path d="M5,-65 L30,-25"/>
+    <polygon points="0,-75 -12,-55 12,-55" fill="rgba(27,94,32,0.35)" stroke="none"/>
     <!-- Bottom-left arrow -->
-    <path d="M-39,22 L-29,42 L-25,34 L-13,41 L-9,33 L-21,26 L-17,18 Z"/>
+    <path d="M-30,-20 L-55,30"/>
+    <path d="M-50,35 L5,35"/>
+    <polygon points="-60,20 -45,42 -40,20" fill="rgba(27,94,32,0.35)" stroke="none"/>
     <!-- Bottom-right arrow -->
-    <path d="M39,22 L29,42 L25,34 L13,41 L9,33 L21,26 L17,18 Z"/>
+    <path d="M30,-20 L55,30"/>
+    <path d="M50,35 L-5,35"/>
+    <polygon points="60,20 45,42 40,20" fill="rgba(27,94,32,0.35)" stroke="none"/>
   </g>
-
-  <!-- Calendar badge -->
-  <circle cx="395" cy="120" r="58" fill="white" stroke="rgba(0,0,0,0.08)" stroke-width="3"/>
-  <rect x="355" y="82" width="80" height="28" rx="8" fill="#e53935"/>
-  <text x="395" y="100" text-anchor="middle" fill="white" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="bold">PAM</text>
-  <text x="395" y="148" text-anchor="middle" fill="#333" font-family="Arial,Helvetica,sans-serif" font-size="42" font-weight="bold">2</text>
 </svg>
