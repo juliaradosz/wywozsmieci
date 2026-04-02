@@ -2,21 +2,21 @@
 {% block title %}Usun wywoz{% endblock %}
 
 {% block content %}
-<div class="card" style="max-width: 500px; margin: 40px auto; text-align: center;">
-    <div class="card-header" style="justify-content: center;">Potwierdzenie usuniecia</div>
+<div class="card" style="text-align: center;">
+    <div class="card-header" style="justify-content: center;">Potwierdzenie</div>
 
     <p style="margin: 20px 0; font-size: 1.05em;">
-        Czy na pewno chcesz usunac wywoz?
+        Usunac ten wywoz?
     </p>
     <p style="margin-bottom: 24px;">
         <strong>{{ wywoz.data|date:"d.m.Y" }}</strong> &mdash;
         <span class="badge badge-{{ wywoz.typ_odpadu }}">{{ wywoz.get_typ_odpadu_display }}</span>
     </p>
 
-    <form method="post" style="display: flex; gap: 10px; justify-content: center;">
+    <form method="post" style="display: flex; flex-direction: column; gap: 10px;">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Tak, usun</button>
-        <a href="{% url 'harmonogram' %}" class="btn btn-secondary">Anuluj</a>
+        <button type="submit" class="btn btn-danger" style="width:100%;">Tak, usun</button>
+        <a href="{% url 'harmonogram' %}" class="btn btn-secondary" style="width:100%; text-align:center;">Anuluj</a>
     </form>
 </div>
 {% endblock %}

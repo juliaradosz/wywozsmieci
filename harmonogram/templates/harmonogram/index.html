@@ -3,27 +3,27 @@
 
 {% block extra_css %}
 .alert-box {
-    background: linear-gradient(135deg, #fff3e0, #fff8e1);
+    background: #fff3e0;
     border-left: 4px solid #ef6c00;
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 20px;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 12px;
-    font-weight: 500;
 }
 .alert-box.alert-green {
-    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    background: #e8f5e9;
     border-left-color: #2e7d32;
 }
-.alert-box .alert-icon { font-size: 1.6em; }
-.alert-box .alert-text { flex: 1; }
-.alert-box .alert-days {
-    font-size: 1.8em;
-    font-weight: 700;
+.alert-icon { font-size: 1.8em; }
+.alert-text { flex: 1; font-size: 0.9em; line-height: 1.4; }
+.alert-text strong { display: block; font-size: 1.05em; }
+.alert-days {
+    font-size: 2em;
+    font-weight: 800;
     color: #ef6c00;
-    min-width: 50px;
+    min-width: 45px;
     text-align: center;
 }
 .alert-box.alert-green .alert-days { color: #2e7d32; }
@@ -31,65 +31,66 @@
 .najblizsze-item {
     display: flex;
     align-items: center;
-    padding: 12px 0;
+    padding: 14px 0;
     border-bottom: 1px solid #f0f0f0;
-    gap: 12px;
+    gap: 10px;
 }
 .najblizsze-item:last-child { border-bottom: none; }
+.najblizsze-ikona { font-size: 1.5em; width: 36px; text-align: center; }
+.najblizsze-info { flex: 1; }
 .najblizsze-data {
-    font-weight: 600;
-    min-width: 140px;
-    color: #444;
+    font-weight: 700;
+    color: #222;
     font-size: 0.95em;
 }
-.najblizsze-ikona { font-size: 1.3em; }
+.najblizsze-dzien {
+    color: #888;
+    font-size: 0.8em;
+    margin-top: 1px;
+}
 
 .month-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 .month-name {
-    font-size: 1.3em;
-    font-weight: 700;
+    font-size: 1.15em;
+    font-weight: 800;
     color: #1b5e20;
 }
 
 table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 3px;
-    margin-bottom: 4px;
+    border-spacing: 2px;
+    table-layout: fixed;
 }
 th {
-    background: #e8f5e9;
-    color: #2e7d32;
-    padding: 10px 4px;
-    font-size: 0.8em;
+    color: #888;
+    padding: 8px 0;
+    font-size: 0.72em;
     font-weight: 600;
-    border-radius: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 td {
     background: white;
-    border-radius: 10px;
-    padding: 6px 4px;
+    border-radius: 8px;
+    padding: 4px 2px;
     vertical-align: top;
-    height: 80px;
-    width: 14.28%;
-    border: 1px solid #f0f0f0;
-    transition: all 0.15s;
+    height: 70px;
+    border: 1px solid #eee;
+    position: relative;
 }
-td:hover { border-color: #c8e6c9; background: #fafffe; }
-td.pusty { background: #fafafa; border-color: transparent; }
-td.pusty:hover { background: #fafafa; }
+td.pusty { background: transparent; border-color: transparent; }
 .dzien-numer {
-    font-weight: 600;
-    font-size: 0.82em;
-    margin-bottom: 4px;
-    color: #888;
+    font-weight: 700;
+    font-size: 0.75em;
+    margin-bottom: 2px;
+    color: #aaa;
+    text-align: center;
 }
 td.dzisiaj {
     border: 2px solid #2e7d32;
@@ -99,48 +100,46 @@ td.dzisiaj .dzien-numer {
     color: white;
     background: #2e7d32;
     border-radius: 50%;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75em;
+    margin: 0 auto 2px;
+    font-size: 0.68em;
 }
 .cal-badge {
     display: block;
-    padding: 2px 4px;
+    padding: 2px 1px;
     border-radius: 4px;
-    font-size: 0.62em;
+    font-size: 0.58em;
     color: white;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     margin: 1px 0;
     text-decoration: none;
-    transition: opacity 0.15s;
+    line-height: 1.3;
 }
-.cal-badge:hover { opacity: 0.8; }
 
 .legenda {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 12px 0 0;
+}
+.legenda-item {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    padding: 12px;
-    font-size: 0.82em;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75em;
     color: #666;
+    font-weight: 500;
 }
-.legenda-item { display: flex; align-items: center; gap: 6px; }
 .legenda-kolor {
-    width: 14px;
-    height: 14px;
-    border-radius: 4px;
-}
-
-@media (max-width: 640px) {
-    td { height: 65px; padding: 4px 2px; }
-    .cal-badge { font-size: 0.55em; padding: 1px 2px; }
-    .month-name { font-size: 1.1em; }
-    .najblizsze-data { min-width: 110px; font-size: 0.85em; }
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
 }
 {% endblock %}
 
@@ -155,38 +154,41 @@ td.dzisiaj .dzien-numer {
         {% elif dni_do == 1 %}
             <strong>Jutro wywoz!</strong> {{ najblizsze.0.get_typ_odpadu_display }}
         {% else %}
-            Nastepny wywoz za <strong>{{ dni_do }} dni</strong> ({{ najblizsze.0.get_typ_odpadu_display }})
+            <strong>{{ najblizsze.0.get_typ_odpadu_display }}</strong>
+            za {{ dni_do }} dni ({{ najblizsze.0.data|date:"d.m" }})
         {% endif %}
     </div>
-    <div class="alert-days">{{ dni_do }}d</div>
+    <div class="alert-days">{{ dni_do }}</div>
 </div>
 {% endif %}
 
 <div class="card">
-    <div class="card-header">&#128197; Najblizsze wywozy</div>
+    <div class="card-header">Najblizsze wywozy</div>
     {% for w in najblizsze %}
-    <div class="najblizsze-item">
+    <a href="{% url 'edytuj' w.pk %}" class="najblizsze-item" style="text-decoration:none; color:inherit;">
         <span class="najblizsze-ikona">{% for k, v in ikony.items %}{% if k == w.typ_odpadu %}{{ v }}{% endif %}{% endfor %}</span>
-        <span class="najblizsze-data">{{ w.data|date:"l, d.m.Y" }}</span>
+        <div class="najblizsze-info">
+            <div class="najblizsze-data">{{ w.data|date:"d.m.Y" }}</div>
+            <div class="najblizsze-dzien">{{ w.data|date:"l" }}</div>
+        </div>
         <span class="badge badge-{{ w.typ_odpadu }}">{{ w.get_typ_odpadu_display }}</span>
-        <a href="{% url 'edytuj' w.pk %}" class="btn-icon" title="Edytuj">&#9998;</a>
-    </div>
+    </a>
     {% empty %}
     <p style="color:#999; padding: 20px 0; text-align:center;">Brak zaplanowanych wywozow.</p>
     {% endfor %}
 </div>
 
-<div class="card" style="padding: 16px;">
+<div class="card">
     <div class="month-nav">
-        <a href="?miesiac={{ prev_miesiac }}&rok={{ prev_rok }}" class="btn btn-secondary btn-sm">&laquo; {{ prev_miesiac }}</a>
+        <a href="?miesiac={{ prev_miesiac }}&rok={{ prev_rok }}" class="btn btn-secondary btn-sm">&laquo;</a>
         <span class="month-name">{{ nazwa_miesiaca }} {{ rok }}</span>
-        <a href="?miesiac={{ next_miesiac }}&rok={{ next_rok }}" class="btn btn-secondary btn-sm">{{ next_miesiac }} &raquo;</a>
+        <a href="?miesiac={{ next_miesiac }}&rok={{ next_rok }}" class="btn btn-secondary btn-sm">&raquo;</a>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>Pon</th><th>Wt</th><th>Sr</th><th>Czw</th><th>Pt</th><th>Sob</th><th>Nd</th>
+                <th>Pn</th><th>Wt</th><th>Sr</th><th>Cz</th><th>Pt</th><th>Sb</th><th>Nd</th>
             </tr>
         </thead>
         <tbody>
@@ -199,8 +201,8 @@ td.dzisiaj .dzien-numer {
                     <td class="{% if d.dzisiaj %}dzisiaj{% endif %}">
                         <div class="dzien-numer">{{ d.dzien }}</div>
                         {% for w in d.wywozki %}
-                            <a href="{% url 'edytuj' w.id %}" class="cal-badge badge-{{ w.typ }}" title="{{ w.typ }}">
-                                {{ w.ikona }}
+                            <a href="{% url 'edytuj' w.id %}" class="cal-badge badge-{{ w.typ }}">
+                                {{ w.nazwa }}
                             </a>
                         {% endfor %}
                     </td>

@@ -17,7 +17,16 @@ IKONY = {
     'papier': '📄',
     'szklo': '🫙',
     'biodegradowalne': '🌿',
-    'popiol': 'ite',
+    'popiol': '🔥',
+}
+
+SKROTY = {
+    'zmieszane': 'Zmiesz.',
+    'opakowaniowe': 'Plastik',
+    'papier': 'Papier',
+    'szklo': 'Szklo',
+    'biodegradowalne': 'Bio',
+    'popiol': 'Popiol',
 }
 
 
@@ -47,6 +56,7 @@ def harmonogram(request):
             'typ': w.typ_odpadu,
             'id': w.id,
             'ikona': IKONY.get(w.typ_odpadu, ''),
+            'nazwa': SKROTY.get(w.typ_odpadu, ''),
         })
 
     kalendarz = []

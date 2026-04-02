@@ -2,7 +2,7 @@
 {% block title %}{{ tytul }}{% endblock %}
 
 {% block content %}
-<div class="card" style="max-width: 500px; margin: 40px auto;">
+<div class="card">
     <div class="card-header">{{ tytul }}</div>
 
     <form method="post">
@@ -17,11 +17,11 @@
         </div>
         {% endfor %}
 
-        <div style="display: flex; gap: 10px; margin-top: 24px;">
-            <button type="submit" class="btn btn-primary">Zapisz</button>
-            <a href="{% url 'harmonogram' %}" class="btn btn-secondary">Anuluj</a>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 24px;">
+            <button type="submit" class="btn btn-primary" style="width:100%;">Zapisz</button>
+            <a href="{% url 'harmonogram' %}" class="btn btn-secondary" style="width:100%; text-align:center;">Anuluj</a>
             {% if wywoz %}
-            <a href="{% url 'usun' wywoz.pk %}" class="btn btn-danger" style="margin-left: auto;">Usun</a>
+            <a href="{% url 'usun' wywoz.pk %}" class="btn btn-danger" style="width:100%; text-align:center;">Usun ten wywoz</a>
             {% endif %}
         </div>
     </form>
