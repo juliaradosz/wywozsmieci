@@ -64,15 +64,35 @@ class Command(BaseCommand):
             (date(2026, 12, 2), 'opakowaniowe'),
         ]
 
-        # BIODEGRADOWALNE
+        # SZKŁO: 16.01, 13.03, 15.05, 17.07, 11.09, 20.11
         dane += [
-            (date(2026, 4, 22), 'biodegradowalne'),
-            (date(2026, 5, 8), 'biodegradowalne'),
-            (date(2026, 6, 17), 'biodegradowalne'),
-            (date(2026, 7, 3), 'biodegradowalne'),
-            (date(2026, 8, 12), 'biodegradowalne'),
-            (date(2026, 9, 23), 'biodegradowalne'),
-            (date(2026, 10, 21), 'biodegradowalne'),
+            (date(2026, 1, 16), 'szklo'),
+            (date(2026, 3, 13), 'szklo'),
+            (date(2026, 5, 15), 'szklo'),
+            (date(2026, 7, 17), 'szklo'),
+            (date(2026, 9, 11), 'szklo'),
+            (date(2026, 11, 20), 'szklo'),
+        ]
+
+        # BIODEGRADOWALNE: 20.01, 17.02, 17.03, 21.04, 5.05, 19.05, 2.06, 23.06, 7.07, 21.07, 4.08, 18.08, 15.09, 29.09, 27.10, 24.11, 29.12
+        dane += [
+            (date(2026, 1, 20), 'biodegradowalne'),
+            (date(2026, 2, 17), 'biodegradowalne'),
+            (date(2026, 3, 17), 'biodegradowalne'),
+            (date(2026, 4, 21), 'biodegradowalne'),
+            (date(2026, 5, 5), 'biodegradowalne'),
+            (date(2026, 5, 19), 'biodegradowalne'),
+            (date(2026, 6, 2), 'biodegradowalne'),
+            (date(2026, 6, 23), 'biodegradowalne'),
+            (date(2026, 7, 7), 'biodegradowalne'),
+            (date(2026, 7, 21), 'biodegradowalne'),
+            (date(2026, 8, 4), 'biodegradowalne'),
+            (date(2026, 8, 18), 'biodegradowalne'),
+            (date(2026, 9, 15), 'biodegradowalne'),
+            (date(2026, 9, 29), 'biodegradowalne'),
+            (date(2026, 10, 27), 'biodegradowalne'),
+            (date(2026, 11, 24), 'biodegradowalne'),
+            (date(2026, 12, 29), 'biodegradowalne'),
         ]
 
         # POPIÓŁ

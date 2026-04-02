@@ -15,6 +15,7 @@ IKONY = {
     'zmieszane': '🗑️',
     'opakowaniowe': '♻️',
     'papier': '📄',
+    'szklo': '🫙',
     'biodegradowalne': '🌿',
     'popiol': 'ite',
 }

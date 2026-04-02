@@ -6,6 +6,7 @@ class WywozSmieci(models.Model):
         ('zmieszane', 'Zmieszane odpady komunalne'),
         ('opakowaniowe', 'Zmieszane odpady opakowaniowe'),
         ('papier', 'Papier'),
+        ('szklo', 'Szkło'),
         ('biodegradowalne', 'Odpady biodegradowalne'),
         ('popiol', 'Popiół'),
     ]
